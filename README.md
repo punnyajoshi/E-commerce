@@ -67,4 +67,5 @@ The project follows best practices in coding and Selenium WebDriver usage, such 
 
 Source Code
 
-The source code is available in the GitHub repository: https://github.com/your-username/ecommerce-web-automation
+The source code is available in the GitHub repository:
+(punnyajoshi): https://github.com/your-username/ecommerce-web-automation
