@@ -18,4 +18,12 @@ public class Cart {
     public int getItemCount() {
         return products.size();
     }
+
+    public Product[] getProducts() {
+        return new Product[0];
+    }
+
+    public String getTotalPrice() {
+        return null;
+    }
 }
