@@ -6,24 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
-
-
-    private List<Product> products = new ArrayList<>();
+    private final List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
         products.add(product);
-        System.out.println("Item added to your cart");
-    }
-
-    public int getItemCount() {
-        return products.size();
     }
 
     public Product[] getProducts() {
-        return new Product[0];
+        return products.toArray(new Product[0]);
     }
 
-    public String getTotalPrice() {
-        return null;
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for (Product product : products) {
+            totalPrice += product.getPrice() * product.getQuantity();
+        }
+        return totalPrice;
     }
 }

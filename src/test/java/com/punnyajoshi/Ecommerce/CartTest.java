@@ -6,11 +6,22 @@ import org.junit.jupiter.api.Test;
 
 public class CartTest {
     @Test
-    public void testAddProduct() {
+    public void testCorrectCartContents() {
         Cart cart = new Cart();
-        Product product = new Product("Example Product", 9.99);
+        Product product = new Product("Sweater", "L", 1, 49.99);
         cart.addProduct(product);
+        Product[] productsInCart = cart.getProducts();
+        Assertions.assertEquals("Sweater", productsInCart[0].getName());
+        Assertions.assertEquals("L", productsInCart[0].getSize());
+        Assertions.assertEquals(49.99, productsInCart[0].getPrice());
+        Assertions.assertEquals(1, productsInCart[0].getQuantity());
+    }
 
-        Assertions.assertEquals(1, cart.getItemCount());
+    @Test
+    public void testCorrectCartTotalPrice() {
+        Cart cart = new Cart();
+        Product product = new Product("Sweater", "L", 1, 49.99);
+        cart.addProduct(product);
+        Assertions.assertEquals(49.99, cart.getTotalPrice());
     }
 }
