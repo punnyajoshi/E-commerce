@@ -28,10 +28,7 @@ public class ProductDetailsPageTest {
 
     @Test
     public void testProductDetails() {
-        if (!productDetailsPage.isProductAvailable()) {
-            logger.info("The product is sold out.");
-            return;
-        }
+        Assert.assertTrue(productDetailsPage.isProductAvailable(), "The product is sold out.");
         Assert.assertTrue(productDetailsPage.isProductDetailsLoaded(), "Product details are not loaded.");
         String productName = productDetailsPage.getProductName();
         logger.info("Product Name: " + productName);

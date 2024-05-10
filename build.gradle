@@ -24,6 +24,7 @@ dependencies {
 
     //Selenium
     implementation 'org.seleniumhq.selenium:selenium-java:4.19.1'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.19.1'
 
 
     //Google
@@ -69,6 +70,11 @@ task smokeTest(type: Test) {
         listeners << "com.ultralesson.qkwebmastery.listeners.ScreenshotListener"
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'smoke'))
     }
+    testLogging {
+        showExceptions = true
+        events = ["passed", "failed", "skipped"]
+    }
 }
+
 
 tasks.smokeTest.finalizedBy('allureReport')
