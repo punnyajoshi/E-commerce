@@ -21,8 +21,10 @@ configurations {
 }
 
 dependencies {
+
     //Selenium
     implementation 'org.seleniumhq.selenium:selenium-java:4.19.1'
+
 
     //Google
     implementation 'com.google.code.gson:gson:2.8.9'

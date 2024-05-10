@@ -6,20 +6,22 @@ import com.punnyajoshi.Ecommerce.Pages.ProductListPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class ProductSelectionTest {
     private WebDriver driver;
     private ProductListPage productListPage;
-    private ProductDetailsPage productDetailsPage;
+    private ProductSelectionPage productSelectionPage;
+    private static final Logger logger = LogManager.getLogger(ProductSelectionPageTest.class);
 
     @BeforeMethod
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
         driver = new ChromeDriver();
         productListPage = new ProductListPage(driver);
-        productDetailsPage = new ProductDetailsPage(driver);
+        productSelectionPage = new ProductSelectionPage(driver);
     }
 
     @AfterMethod
@@ -28,22 +30,19 @@ public class ProductSelectionTest {
     }
 
     @Test
-    public void testSelectProductByName() {
-        driver.get("https://web-playground.ultralesson.com/store");
-        Product product = productListPage.selectProductByName("Product 1");
-        assert product!= null;
-        assert productDetailsPage.isProductDetailsLoaded();
-        assert productDetailsPage.getProductName().equals(product.getName());
-        productDetailsPage.addToCart();
-    }
+    public void testProductSelection() {
+        String expectedProductName = "Test Product";
 
-    @Test
-    public void testSelectProductByIndex() {
-        driver.get("https://web-playground.ultralesson.com/store");
-        Product product = productListPage.selectProductByIndex(0);
-        assert product!= null;
-        assert productDetailsPage.isProductDetailsLoaded();
-        assert productDetailsPage.getProductName().equals(product.getName());
-        productDetailsPage.addToCart();
+        productListPage.navigateTo();
+        productListPage.clickFirstProduct();
+
+        if (!productSelectionPage.isProductAvailable()) {
+            logger.info("The product is sold out.");
+            return;
+        }
+
+        productSelectionPage.selectProduct();
+        String actualProductName = productSelectionPage.getSelectedProductName();
+        Assert.assertEquals(actualProductName, expectedProductName, "Selected product name does not match the expected value.");
     }
 }

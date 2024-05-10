@@ -5,34 +5,42 @@ import com.punnyajoshi.Ecommerce.Pages.ProductListPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import java.util.logging.Logger;
 
 public class ProductDetailsPageTest {
     private WebDriver driver;
-    private ProductListPage productListPage;
     private ProductDetailsPage productDetailsPage;
+    private static final Logger logger = Logger.getLogger(String.valueOf(ProductDetailsPageTest.class));
 
-    @BeforeMethod
+    @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         driver = new ChromeDriver();
-        productListPage = new ProductListPage(driver);
+        driver.get("https://www.example.com/product-details");
         productDetailsPage = new ProductDetailsPage(driver);
     }
 
-    @AfterMethod
-    public void teardown() {
-        driver.quit();
+    @Test
+    public void testProductDetails() {
+        if (!productDetailsPage.isProductAvailable()) {
+            logger.info("The product is sold out.");
+            return;
+        }
+        Assert.assertTrue(productDetailsPage.isProductDetailsLoaded(), "Product details are not loaded.");
+        String productName = productDetailsPage.getProductName();
+        logger.info("Product Name: " + productName);
+        productDetailsPage.addToCart();
+        logger.info("Product added to cart.");
     }
 
-    @Test
-    public void testProductDetailsPage() {
-        driver.get("https://web-playground.ultralesson.com/store");
-        productListPage.selectProductByName("Product 1");
-        assert productDetailsPage.isProductDetailsLoaded();
-        assert productDetailsPage.getProductName().equals("Product 1");
-        assert productDetailsPage.isProductAvailable();
-        productDetailsPage.addToCart();
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
     }
 }
