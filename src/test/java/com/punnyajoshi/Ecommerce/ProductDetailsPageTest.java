@@ -24,11 +24,11 @@ public class ProductDetailsPageTest {
         driver = new ChromeDriver();
         driver.get("https://www.example.com/product-details");
         productDetailsPage = new ProductDetailsPage(driver);
+        Assert.assertTrue(productDetailsPage.isProductAvailable(), "The product is sold out. Test aborted.");
     }
 
     @Test
     public void testProductDetails() {
-        Assert.assertTrue(productDetailsPage.isProductAvailable(), "The product is sold out.");
         Assert.assertTrue(productDetailsPage.isProductDetailsLoaded(), "Product details are not loaded.");
         String productName = productDetailsPage.getProductName();
         logger.info("Product Name: " + productName);

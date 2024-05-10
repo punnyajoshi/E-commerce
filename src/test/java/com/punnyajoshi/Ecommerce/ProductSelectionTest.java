@@ -3,46 +3,39 @@ package com.punnyajoshi.Ecommerce;
 import com.punnyajoshi.Ecommerce.Pages.Product;
 import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;
 import com.punnyajoshi.Ecommerce.Pages.ProductListPage;
+import com.punnyajoshi.Ecommerce.Pages.ProductSelectionPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+
+import java.util.logging.Logger;
 
 public class ProductSelectionTest {
     private WebDriver driver;
-    private ProductListPage productListPage;
     private ProductSelectionPage productSelectionPage;
-    private static final Logger logger = LogManager.getLogger(ProductSelectionPageTest.class);
 
-    @BeforeMethod
+    @BeforeTest
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
         driver = new ChromeDriver();
-        productListPage = new ProductListPage(driver);
+        driver.get("https://www.example.com/product-selection");
         productSelectionPage = new ProductSelectionPage(driver);
-    }
-
-    @AfterMethod
-    public void teardown() {
-        driver.quit();
     }
 
     @Test
     public void testProductSelection() {
-        String expectedProductName = "Test Product";
-
-        productListPage.navigateTo();
-        productListPage.clickFirstProduct();
-
-        if (!productSelectionPage.isProductAvailable()) {
-            logger.info("The product is sold out.");
-            return;
-        }
-
+        Assert.assertTrue(productSelectionPage.isProductAvailable(), "The product is not available.");
         productSelectionPage.selectProduct();
-        String actualProductName = productSelectionPage.getSelectedProductName();
-        Assert.assertEquals(actualProductName, expectedProductName, "Selected product name does not match the expected value.");
+        Assert.assertEquals(productSelectionPage.getSelectedProductName(), "Expected Product Name", "Product name does not match.");
+    }
+
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
     }
 }

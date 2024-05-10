@@ -3,8 +3,8 @@ plugins {
     id "io.qameta.allure" version "2.11.2"
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'com.punnyajoshi.Ecommerce'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -67,7 +67,7 @@ task smokeTest(type: Test) {
         includeGroups System.getProperty("tags", "smoke")
         testLogging.showStandardStreams = true
         useDefaultListeners true
-        listeners << "com.ultralesson.qkwebmastery.listeners.ScreenshotListener"
+        //listeners << "com.ultralesson.qkwebmastery.listeners.ScreenshotListener"
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'smoke'))
     }
     testLogging {
