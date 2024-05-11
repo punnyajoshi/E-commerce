@@ -66,4 +66,15 @@ public class CartPage {
         driver.getCurrentUrl();
         return null;
     }
+
+    public String getCartMessage() {
+        // Implement logic to get the cart message
+        // For example, if the message is displayed in a <p> tag, you can find that tag and get its text
+        return driver.findElement(By.xpath("//*[@id=\"product-form-template--15328405717213__main\"]/div/button/span")).getText();
+    }
+
+
+    public boolean isCartEmpty() {
+        return false;
+    }
 }
