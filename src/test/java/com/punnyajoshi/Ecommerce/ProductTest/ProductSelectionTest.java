@@ -1,4 +1,4 @@
-package com.punnyajoshi.Ecommerce;
+package com.punnyajoshi.Ecommerce.ProductTest;
 
 import com.punnyajoshi.Ecommerce.Pages.Product;
 import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;

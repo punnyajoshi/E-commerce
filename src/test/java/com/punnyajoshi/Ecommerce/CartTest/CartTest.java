@@ -1,5 +1,6 @@
-package com.punnyajoshi.Ecommerce;
+package com.punnyajoshi.Ecommerce.CartTest;
 
+import com.punnyajoshi.Ecommerce.CartPackage.Cart;
 import com.punnyajoshi.Ecommerce.Pages.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,4 +25,5 @@ public class CartTest {
         cart.addProduct(product);
         Assertions.assertEquals(49.99, cart.getTotalPrice());
     }
+
 }

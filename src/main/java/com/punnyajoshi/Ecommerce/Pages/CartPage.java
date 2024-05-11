@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage {
     private WebDriver driver;
-    private String cartUrl;
+    private String cartUrl = "https://web-playground.ultralesson.com/cart";
+
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -15,6 +16,7 @@ public class CartPage {
         driver.get(cartUrl);
     }
 
+
     public void addProductToCart(String s) {
         driver.getCurrentUrl();
     }
@@ -22,5 +24,11 @@ public class CartPage {
     public String productsAreDisplayedCorrectly() {
         driver.getCurrentUrl();
         return null;
+    }
+
+    CartPage cartPage = new CartPage(driver);
+
+    public boolean areProductsDisplayedCorrectly(String sweater, String l, double v, int i) {
+        return false;
     }
 }
