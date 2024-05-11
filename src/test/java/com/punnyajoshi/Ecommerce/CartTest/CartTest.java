@@ -1,29 +1,41 @@
 package com.punnyajoshi.Ecommerce.CartTest;
 
 import com.punnyajoshi.Ecommerce.CartPackage.Cart;
+import com.punnyajoshi.Ecommerce.Pages.CartPage;
 import com.punnyajoshi.Ecommerce.Pages.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CartTest {
     @Test
-    public void testCorrectCartContents() {
-        Cart cart = new Cart();
-        Product product = new Product("Sweater", "L", 1, 49.99);
-        cart.addProduct(product);
-        Product[] productsInCart = cart.getProducts();
-        Assertions.assertEquals("Sweater", productsInCart[0].getName());
-        Assertions.assertEquals("L", productsInCart[0].getSize());
-        Assertions.assertEquals(49.99, productsInCart[0].getPrice());
-        Assertions.assertEquals(1, productsInCart[0].getQuantity());
+    public void testProductListedCorrectlyOnCartPage() {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://web-playground.ultralesson.com");
+        CartPage cartPage = new CartPage(driver);
+        cartPage.navigateToCartPage(); // Ensure navigating to the correct URL
+
+        // Use the method to assert that product details are displayed correctly
+        boolean areDisplayedCorrectly = cartPage.areProductsDisplayedCorrectly("Sweater", "L", 49.99, 1);
+        assertTrue("Products are not displayed correctly.", areDisplayedCorrectly);
+
+        driver.quit();
     }
 
     @Test
     public void testCorrectCartTotalPrice() {
-        Cart cart = new Cart();
-        Product product = new Product("Sweater", "L", 1, 49.99);
-        cart.addProduct(product);
-        Assertions.assertEquals(49.99, cart.getTotalPrice());
-    }
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://web-playground.ultralesson.com");
+        CartPage cartPage = new CartPage(driver);
+        cartPage.navigateToCartPage(); // Ensure navigating to the correct URL
 
+        double displayedTotalPrice = cartPage.calculateTotalPrice();
+        double expectedTotal = 49.99 + 19.99 * 2; // Correct calculation of total price
+        Assertions.assertEquals(expectedTotal, displayedTotalPrice, "Total price displayed is incorrect.");
+
+        driver.quit();
+    }
 }
