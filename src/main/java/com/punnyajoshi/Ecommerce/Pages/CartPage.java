@@ -4,28 +4,36 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class CartPage {
-    private WebDriver driver;
-    private String cartUrl = "https://web-playground.ultralesson.com/cart";
-
-
-    public CartPage(WebDriver driver) {
-        this.driver = driver;
-        this.cartUrl = cartUrl;
+public class CartPage extends BasePage {
+    public CartPage(WebDriver driver){
+        super(driver);
     }
 
-    public void navigateToCartPage() {
-        driver.get(cartUrl);
-        Assertions.assertEquals(cartUrl, driver.getCurrentUrl(), "Navigation to the cart page failed.");
-    }
+    @FindBy(xpath = "//*[@id=\"shopify-section-template--15328405520605__cart-items\"]/cart-items/div[1]/h1")
+    private WebElement cartHeading;
+
+    @FindBy(xpath = "//*[@id=\"CartItem-1\"]/td[2]/a")
+    private WebElement productAddedName;
+
+    @FindBy(xpath = "/html[1]/body[1]/main[1]/div[1]/cart-items[1]/form[1]/div[1]/div[1]/table[1]/tbody[1]/tr[1]/td[2]/dl[1]/div[2]/dd[1]")
+    private WebElement productAddedSize;
+
+    @FindBy(xpath = "//*[@id=\"CartItem-1\"]/td[4]/quantity-input/button[2]")
+    private WebElement increaseQuantity;
+
+    @FindBy(xpath = "//input[@id='Quantity-1']")
+    private WebElement productAddedQuantity;
+
+    @FindBy(xpath = "//*[@id=\"CartItem-1\"]/td[5]/div[2]/span")
+    private WebElement productAddedPrice;
+
+
 
     public boolean areProductsDisplayedCorrectly(String name, String size, double price, int quantity) {
-        // Implement logic to find products in the cart and validate their details
-        // return true if details are correct, false otherwise
-        // Example:
         List<WebElement> productList = driver.findElements(By.xpath("//*[@id=\"shopify-section-template--15328405717213__main\"]/section/div/div[1]/slider-component/ul/li/modal-opener/button"));
         for (WebElement product : productList) {
             String productName = product.findElement(By.xpath("//*[@id=\"shopify-section-template--15328405717213__main\"]/section/div/div[1]/slider-component/ul/li/modal-opener/button")).getText();
@@ -40,12 +48,45 @@ public class CartPage {
         return false;
     }
 
-    // Now this must be called to navigate to the Cart Page
-    // Example usage in tests or application's flow
-    CartPage cartPage = new CartPage(driver);
+    public String getCartHeading(){
+        return webActions.getText(cartHeading);
+    }
 
 
-    // Implement logic to calculate the total price based on the web elements representing cart items
+    public void addProductToCart(String s) {
+        driver.getCurrentUrl();
+    }
+
+    public String getAddedProductName(){
+        return webActions.getText(productAddedName).trim();
+    }
+
+    public String productsAreDisplayedCorrectly() {
+        driver.getCurrentUrl();
+        return null;
+    }
+
+    public String getSizeOfAddedProduct(){
+        return webActions.getText(productAddedSize).trim();
+    }
+
+    public int getQuantityOfAddedProduct(){
+        int quantity=Integer.parseInt(productAddedQuantity.getAttribute("value"));
+        return quantity;
+    }
+
+    public String getCartMessage() {
+        return driver.findElement(By.xpath("//*[@id=\"product-form-template--15328405717213__main\"]/div/button/span")).getText();
+    }
+
+    public double getProductAddedPrice(){
+        String getPrice= webActions.getText(productAddedPrice);
+        String numberString = getPrice.replaceAll("[^0-9.]", "");
+        return Double.parseDouble(numberString);
+    }
+
+
+
     public double calculateTotalPrice() {
         double totalPrice = 0;
         List<WebElement> productList = driver.findElements(By.xpath("//*[@id=\"shopify-section-template--15328405717213__main\"]/section/div/div[1]/slider-component/ul/li/modal-opener/button"));
@@ -57,24 +98,17 @@ public class CartPage {
         return totalPrice;
     }
 
-
-    public void addProductToCart(String s) {
-        driver.getCurrentUrl();
+    public int getItemCountInCart() {
+        WebElement itemCountElement = driver.findElement(By.xpath("xpath-to-cart-item-count"));
+        return Integer.parseInt(itemCountElement.getText().trim());
     }
-
-    public String productsAreDisplayedCorrectly() {
-        driver.getCurrentUrl();
-        return null;
-    }
-
-    public String getCartMessage() {
-        // Implement logic to get the cart message
-        // For example, if the message is displayed in a <p> tag, you can find that tag and get its text
-        return driver.findElement(By.xpath("//*[@id=\"product-form-template--15328405717213__main\"]/div/button/span")).getText();
-    }
-
 
     public boolean isCartEmpty() {
         return false;
+    }
+
+
+    public void navigateToCartPage() {
+        return;
     }
 }

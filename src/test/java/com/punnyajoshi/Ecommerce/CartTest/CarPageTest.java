@@ -1,5 +1,6 @@
 package com.punnyajoshi.Ecommerce.CartTest;
 
+import com.punnyajoshi.Ecommerce.BaseTest;
 import com.punnyajoshi.Ecommerce.CartPackage.Cart;
 import com.punnyajoshi.Ecommerce.Pages.CartPage;
 import com.punnyajoshi.Ecommerce.Pages.Product;
@@ -11,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.testng.AssertJUnit.assertTrue;
 
-public class CarPageTest {
+public class CarPageTest extends BaseTest {
     @Test
     public void testProductListedCorrectlyOnCartPage() {
         WebDriver driver = new ChromeDriver();

@@ -1,19 +1,12 @@
 package com.punnyajoshi.Ecommerce.ProductTest;
 
-import com.punnyajoshi.Ecommerce.Pages.Product;
-import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;
-import com.punnyajoshi.Ecommerce.Pages.ProductListPage;
 import com.punnyajoshi.Ecommerce.Pages.ProductSelectionPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
-
-import java.util.logging.Logger;
 
 public class ProductSelectionTest {
     private WebDriver driver;
