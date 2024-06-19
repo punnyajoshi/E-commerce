@@ -15,7 +15,7 @@ public class WebActions {
         this.driver = driver;
         this.driverWait=new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-    public String getText(WebElement element){
+    public static String getText(WebElement element){
         return driverWait.until(ExpectedConditions.visibilityOf(element)).getText();
     }
 }

@@ -1,11 +1,15 @@
 package com.punnyajoshi.Ecommerce.Pages;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class CartPage extends BasePage {
@@ -110,5 +114,22 @@ public class CartPage extends BasePage {
 
     public void navigateToCartPage() {
         return;
+    }
+
+    public CartPage removeProductFromCart(String addedProductName) {
+        WebElement deleteBtn= driver.findElement(By.xpath("//*[@id=\"Remove-1\"]/a"));
+        buttonActions.click(deleteBtn);
+        return new CartPage(driver);
+    }
+
+    public boolean CheckWeatherCartIsEmpty() {
+        try {
+            WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(2));
+            WebElement emptyCartMessage = driver.findElement(By.xpath("//h1[normalize-space()='Your cart is empty']"));
+            webDriverWait.until(ExpectedConditions.visibilityOf(emptyCartMessage));
+            return emptyCartMessage.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

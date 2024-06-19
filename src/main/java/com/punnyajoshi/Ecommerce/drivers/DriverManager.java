@@ -10,9 +10,9 @@ public class DriverManager {
 
     public WebDriver create(BrowserType type){
         return switch (type) {
+            case CHROME -> new ChromeDriver();
             case FIREFOX -> new FirefoxDriver();
             case EDGE -> new EdgeDriver();
-            default -> new ChromeDriver();
         };
     }
 

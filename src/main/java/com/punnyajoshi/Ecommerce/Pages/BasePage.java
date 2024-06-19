@@ -1,5 +1,6 @@
 package com.punnyajoshi.Ecommerce.Pages;
 
+import com.punnyajoshi.Ecommerce.Pages.account.ForgotPasswordPage;
 import com.punnyajoshi.Ecommerce.actions.ButtonAction;
 import com.punnyajoshi.Ecommerce.actions.TextBox;
 import com.punnyajoshi.Ecommerce.actions.WebActions;
@@ -24,4 +25,7 @@ public abstract class BasePage {
     }
 
 
+    public ForgotPasswordPage navToForgotPasswordPage() {
+        return new ForgotPasswordPage(driver);
+    }
 }

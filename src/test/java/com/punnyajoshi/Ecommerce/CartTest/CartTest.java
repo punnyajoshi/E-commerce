@@ -1,8 +1,6 @@
 package com.punnyajoshi.Ecommerce.CartTest;
 
-import com.punnyajoshi.Ecommerce.CartPackage.Cart;
 import com.punnyajoshi.Ecommerce.Pages.CartPage;
-import com.punnyajoshi.Ecommerce.Pages.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;

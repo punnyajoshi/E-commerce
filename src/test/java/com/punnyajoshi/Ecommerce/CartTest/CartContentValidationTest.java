@@ -7,11 +7,17 @@ import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;
 import com.punnyajoshi.Ecommerce.Pages.ViewSearchResultPage;
 import com.punnyajoshi.Ecommerce.actions.SearchContentAction;
 import com.punnyajoshi.Ecommerce.modals.CartModal;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CartContentValidationTest  extends BaseTest {
-    @Test(testName = "able is navigate to cart page",description = "Verifies that the user is navigated to the cart page")
+
+    private static final Logger logger = LogManager.getLogger(CartContentValidationTest.class);
+    private static final Logger cartLogger = LogManager.getLogger("CartLogger");
+
+    @Test
     public void userIsAbleToNavigateToCartPage(){
         SearchContentAction searchContent=SearchContentAction.builder().build().stellTop();
         HomePage homePage=new HomePage(getWebDriver());
@@ -38,8 +44,8 @@ public class CartContentValidationTest  extends BaseTest {
     }
 
 
-    @Test(testName = "verify that Product which is added Listed in Cart With Correct Details", description = "Checks that the product added is listed in the cart with the correct details such as name, size, and quantity.")
-    public void checkTheProductWhichIsAddedIsListedInCartWithCorrectDetails() {
+    @Test
+    public void checkTheProductListedInTheCartWithCorrectDetails() {
         SearchContentAction searchContent=SearchContentAction.builder().build().golfShoes();
         HomePage homePage=new HomePage(getWebDriver());
 
@@ -66,6 +72,8 @@ public class CartContentValidationTest  extends BaseTest {
         Assert.assertTrue((cartPage.getSizeOfAddedProduct().contains(productDetailsPage.getSizeSelected())));
         Assert.assertEquals(cartPage.getQuantityOfAddedProduct(),productDetailsPage.getQuantitySelected());
         Assert.assertEquals(cartPage.getProductAddedPrice(),productDetailsPage.getProductPrice());
+
+        logger.info("Test checkTheProductWhichIsAddedIsListedInCartWithCorrectDetails completed successfully");
 
     }
 }

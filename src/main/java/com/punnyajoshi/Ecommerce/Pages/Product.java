@@ -2,10 +2,16 @@ package com.punnyajoshi.Ecommerce.Pages;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.openqa.selenium.WebDriver;
 
 @Getter
 @Setter
 public class Product {
+
+    public Product(WebDriver driver) {
+        super();
+    }
+
     private String name;
     private String size;
     private int quantity;

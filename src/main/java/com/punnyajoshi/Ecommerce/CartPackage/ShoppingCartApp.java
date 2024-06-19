@@ -1,6 +1,5 @@
-package com.punnyajoshi.Ecommerce.CartPackage;
+package com.punnyajoshi.Ecommerce.cartPackage;
 
-import com.punnyajoshi.Ecommerce.CartPackage.Cart;
 import com.punnyajoshi.Ecommerce.Pages.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
