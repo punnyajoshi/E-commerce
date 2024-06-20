@@ -1,5 +1,6 @@
-package com.punnyajoshi.Ecommerce.Pages;
+package com.punnyajoshi.Ecommerce.product;
 
+import com.punnyajoshi.Ecommerce.Pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

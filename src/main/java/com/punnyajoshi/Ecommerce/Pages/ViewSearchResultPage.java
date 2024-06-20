@@ -1,5 +1,6 @@
 package com.punnyajoshi.Ecommerce.Pages;
 
+import com.punnyajoshi.Ecommerce.product.ProductDetailsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

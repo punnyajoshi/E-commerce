@@ -1,5 +1,7 @@
-package com.punnyajoshi.Ecommerce.Pages;
+package com.punnyajoshi.Ecommerce.product;
 
+import com.punnyajoshi.Ecommerce.Pages.BasePage;
+import com.punnyajoshi.Ecommerce.cartPackage.CartPage;
 import com.punnyajoshi.Ecommerce.actions.ButtonAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
@@ -13,7 +15,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class ProductDetailsPage extends BasePage{
+public class ProductDetailsPage extends BasePage {
     public ProductDetailsPage(WebDriver driver){
         super(driver);
     }

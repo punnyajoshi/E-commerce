@@ -1,6 +1,6 @@
 package com.punnyajoshi.Ecommerce.ProductTest;
 
-import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;
+import com.punnyajoshi.Ecommerce.product.ProductDetailsPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

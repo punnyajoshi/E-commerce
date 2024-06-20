@@ -1,4 +1,4 @@
-package com.punnyajoshi.Ecommerce.Pages;
+package com.punnyajoshi.Ecommerce.modals;
 
 import lombok.Getter;
 import lombok.Setter;

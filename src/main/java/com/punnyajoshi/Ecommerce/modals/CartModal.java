@@ -1,7 +1,7 @@
 package com.punnyajoshi.Ecommerce.modals;
 
 import com.punnyajoshi.Ecommerce.Pages.BasePage;
-import com.punnyajoshi.Ecommerce.Pages.CartPage;
+import com.punnyajoshi.Ecommerce.cartPackage.CartPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

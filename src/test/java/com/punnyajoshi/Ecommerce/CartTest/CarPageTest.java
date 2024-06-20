@@ -2,28 +2,23 @@ package com.punnyajoshi.Ecommerce.CartTest;
 
 import com.punnyajoshi.Ecommerce.BaseTest;
 import com.punnyajoshi.Ecommerce.cartPackage.Cart;
-import com.punnyajoshi.Ecommerce.Pages.CartPage;
-import com.punnyajoshi.Ecommerce.Pages.Product;
+import com.punnyajoshi.Ecommerce.cartPackage.CartPage;
+import com.punnyajoshi.Ecommerce.modals.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.testng.AssertJUnit.assertTrue;
 
 public class CarPageTest extends BaseTest {
     @Test
     public void testProductListedCorrectlyOnCartPage() {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://web-playground.ultralesson.com");
-        CartPage cartPage = new CartPage(driver);
+
+        CartPage cartPage = new CartPage(getWebDriver());
         cartPage.navigateToCartPage(); // Ensure navigating to the correct URL
 
         // Use the method to assert that product details are displayed correctly
         boolean areDisplayedCorrectly = cartPage.areProductsDisplayedCorrectly("Sweater", "L", 49.99, 1);
         assertTrue("Products are not displayed correctly.", areDisplayedCorrectly);
-
-        driver.quit();
     }
 
     @Test

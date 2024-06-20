@@ -1,4 +1,4 @@
-package com.punnyajoshi.Ecommerce;
+package com.punnyajoshi.Ecommerce.drivers;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

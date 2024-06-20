@@ -1,6 +1,6 @@
 package com.punnyajoshi.Ecommerce.cartPackage;
 
-import com.punnyajoshi.Ecommerce.Pages.Product;
+import com.punnyajoshi.Ecommerce.modals.Product;
 
 import java.util.ArrayList;
 import java.util.List;

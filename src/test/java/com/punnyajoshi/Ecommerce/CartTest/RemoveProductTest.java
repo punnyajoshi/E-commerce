@@ -2,9 +2,9 @@ package com.punnyajoshi.Ecommerce.CartTest;
 
 import com.punnyajoshi.Ecommerce.BaseTest;
 
-import com.punnyajoshi.Ecommerce.Pages.CartPage;
+import com.punnyajoshi.Ecommerce.cartPackage.CartPage;
 import com.punnyajoshi.Ecommerce.Pages.HomePage;
-import com.punnyajoshi.Ecommerce.Pages.ProductDetailsPage;
+import com.punnyajoshi.Ecommerce.product.ProductDetailsPage;
 import com.punnyajoshi.Ecommerce.Pages.ViewSearchResultPage;
 import com.punnyajoshi.Ecommerce.actions.SearchContentAction;
 import com.punnyajoshi.Ecommerce.modals.CartModal;
