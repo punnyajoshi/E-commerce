@@ -73,7 +73,6 @@ public class CartContentValidationTest  extends BaseTest {
         Assert.assertEquals(cartPage.getQuantityOfAddedProduct(),productDetailsPage.getQuantitySelected());
         Assert.assertEquals(cartPage.getProductAddedPrice(),productDetailsPage.getProductPrice());
 
-        logger.info("Test checkTheProductWhichIsAddedIsListedInCartWithCorrectDetails completed successfully");
 
     }
 }

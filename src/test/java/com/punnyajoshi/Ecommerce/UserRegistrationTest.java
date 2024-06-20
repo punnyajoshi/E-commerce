@@ -93,6 +93,5 @@ public class UserRegistrationTest extends BaseTest{
         registrationLogger.debug("Retrieved error message: {}", errorMessage);
         Assert.assertTrue(errorMessage.contains("Password cannot be blank"), "Error message verification");
 
-        logger.info("Test completed successfully");
     }
 }

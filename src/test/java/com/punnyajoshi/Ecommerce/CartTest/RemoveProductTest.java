@@ -62,6 +62,5 @@ public class RemoveProductTest extends BaseTest {
         cartLogger.debug("Checking if cart is empty: {}", isCartEmpty);
 
         Assert.assertTrue(isCartEmpty, "Cart should be empty after removing the product");
-        logger.info("Test verifyProductIsRemovedFromCart completed successfully");
     }
 }
